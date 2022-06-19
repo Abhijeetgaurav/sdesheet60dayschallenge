@@ -1,0 +1,23 @@
+void permutate(string s,vector<string>&ans,int l,int r)
+{
+    // base case
+    if(l==r)
+    {
+        ans.push_back(s);
+        return;
+    }
+    for(int i=l;i<=r;i++)
+    {
+        swap(s[l],s[i]);
+        permutate(s,ans,l+1,r);    
+        swap(s[l],s[i]);
+    }
+}
+vector<string> findPermutations(string &s) {
+    // Write your code here.
+    vector<string>ans;
+    int l = 0;
+    int r = s.size()-1;
+    permutate(s,ans,l,r);
+        return ans;
+}
