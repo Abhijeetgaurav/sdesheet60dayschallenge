@@ -1,0 +1,25 @@
+void solve(vector<int>nums,vector<int>output,int index,vector<vector<int>>&ans)
+{
+    if(index==nums.size())
+    {
+        ans.push_back(output);
+        return;
+    }
+    // excluding the integer
+    solve(nums,output,index+1,ans);
+
+    // including the next integer
+    int temp = nums[index];
+    output.push_back(temp);
+    solve(nums,output,index+1,ans);
+}
+
+vector<vector<int>> pwset(vector<int>v)
+{
+    //Write your code here
+    vector<int>output;
+    vector<vector<int>>ans;
+    int index = 0;
+    solve(v,output,index,ans);
+    return ans;
+}
