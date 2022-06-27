@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+int uniqueSubstrings(string input)
+{
+    //Write your code here
+   
+    int ans = INT_MIN;
+    for(int i=0;i<input.size();i++){
+        unordered_map<char,int>m;
+        int count=0;
+        for(int j=i;j<input.size();j++){
+            m[input[j]]++;
+            if(m[input[j]]>1){
+                ans=max(count,ans);
+                break;
+            }
+            count++;
+        }
+        ans=max(count,ans);
+    }
+    return ans;
+}
+// int mapp[26];
+//     for(int i=0;i<26;i++)
+//         mapp[i] = 0;
+//     for(int i=0;i<input.size();i++)
+//     {
+//         int index = input[i]-'a';
+//         mapp[index]++;
+//     }
+//     int count = 0;
+//     int ans = INT_MIN;
+//     for(int i=0;i<26;i++)
+//     {
+//         if(mapp[i]>=1)
+//         {
+//             count++;
+//             ans = max(ans,count);
+//         }
+//         else if(mapp[i]==0)
+//             count=0;
+//     }
+//     return ans;
