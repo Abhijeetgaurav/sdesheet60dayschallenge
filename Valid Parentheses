@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+bool isValidParenthesis(string expression)
+{
+    // Write your code here.
+    stack<char>s;
+    for(int i=0;i<expression.size();i++)
+    {
+        if(expression[i]=='{' or expression[i]=='(' or expression[i]=='[')
+            s.push(expression[i]);
+        else{
+            if(expression[i]=='}')
+            {
+                if(!s.empty() and s.top()=='{')
+                    s.pop();
+                else 
+                    return false;
+            }
+            else if(expression[i]==')')
+            {
+                if(!s.empty() and s.top()=='(')
+                    s.pop();
+                else 
+                    return false;
+            }
+            else if(expression[i]==']')
+            {
+                if(!s.empty() and s.top()=='[')
+                    s.pop();
+                else 
+                    return false;
+            }
+        }
+        
+    }
+    if(s.empty())
+        return true;
+    else 
+        return false;
+}
