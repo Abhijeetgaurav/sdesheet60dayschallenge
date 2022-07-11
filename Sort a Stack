@@ -1,0 +1,23 @@
+void sort_recursive(stack<int> &stack,int temp)
+{
+    if(stack.empty() or (!stack.empty() and stack.top()<temp))
+    {
+        stack.push(temp);
+        return;
+    }
+    int store = stack.top();
+    stack.pop();
+    sort_recursive(stack,temp);
+    stack.push(store);
+}
+void sortStack(stack<int> &stack)
+{
+	// Write your code here
+    if(stack.empty())
+        return;
+    int temp = stack.top();
+    stack.pop();
+    sortStack(stack);
+    // we will insert at bottom by extracting each top element;
+    sort_recursive(stack,temp);
+}
